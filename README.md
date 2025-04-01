@@ -2,4 +2,6 @@
 
 Jonkinlainen **budjetointisovellus**, *speksit tarkentuvat myöhemmin.*
 
-- [Laskarit](laskarit/)
+- [Vaatimusmäärittely](./dokumentaatio/vaatimusmaarittely.md)
+- [Työaikakirjanpito](./dokumentaatio/tuntikirjanpito.md)
+
