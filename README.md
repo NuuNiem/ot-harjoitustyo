@@ -2,6 +2,7 @@
 
 Jonkinlainen **budjetointisovellus**, *speksit tarkentuvat myöhemmin.*
 
-- [Vaatimusmäärittely](./dokumentaatio/vaatimusmaarittely.md)
-- [Työaikakirjanpito](./dokumentaatio/tuntikirjanpito.md)
+- [Vaatimusmäärittely](./budgeting-app/dokumentaatio/vaatimusmaarittely.md)
+- [Työaikakirjanpito](./budgeting-app/dokumentaatio/tuntikirjanpito.md)
+- [Changelog](./budgeting-app/dokumentaatio/changelog.md)
 
