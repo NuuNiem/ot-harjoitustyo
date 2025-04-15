@@ -60,7 +60,8 @@ classDiagram
     BudgetRepository --> Expense
 ```
 
-
+## Sekvenssikaavio
+Uuden budjetin luominen
 ```mermaid
 sequenceDiagram
   actor User
