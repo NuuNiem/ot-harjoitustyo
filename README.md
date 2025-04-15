@@ -1,8 +1,49 @@
 # Ohjelmistotekniikka, harjoitustyö
 
-Jonkinlainen **budjetointisovellus**, *speksit tarkentuvat myöhemmin.*
+Sovelluksen avulla käyttäjien on mahdollista luoda, hallita ja tarkastella budjetteja. 
 
+## Dokumentaatio
 - [Vaatimusmäärittely](./budgeting-app/dokumentaatio/vaatimusmaarittely.md)
 - [Työaikakirjanpito](./budgeting-app/dokumentaatio/tuntikirjanpito.md)
 - [Changelog](./budgeting-app/dokumentaatio/changelog.md)
+
+## Asennus
+
+1. Siirry hakemistoon budgeting-app:
+
+```bash
+cd budgeting-app
+```
+
+2. Asenna riippuvuudet komennolla:
+   
+```bash
+poetry install
+```
+
+3. Käynnistä sovellus komennolla:
+```bash
+poetry run invoke start
+```
+
+### Testaus
+
+Testit suoritetaan komennolla:
+
+```bash
+poetry run invoke test
+```
+### Testikattavuus
+
+Testikattavuusraportin voi generoida komennolla:
+
+```bash
+poetry run invoke coverage-report
+```
+
+### Pylint
+
+```bash
+poetry run invoke lint
+```
 
