@@ -30,7 +30,8 @@ class BudgetingService:
             return self.add_budget_to_user(username, name, amount)
         except ValueError as e:
             if "could not convert string to float" in str(e).lower():
-                raise ValueError("Invalid amount format. Please enter a number.") from e
+                raise ValueError(
+                    "Invalid amount format. Please enter a number.") from e
             raise
 
     def add_budget_to_user(self, username, budget_name, total_amount):
@@ -60,7 +61,8 @@ class BudgetingService:
             return self.add_expense_to_budget(budget_id, description, amount)
         except ValueError as e:
             if "could not convert string to float" in str(e).lower():
-                raise ValueError("Invalid amount format. Please enter a number.") from e
+                raise ValueError(
+                    "Invalid amount format. Please enter a number.") from e
             raise
 
     def add_expense_to_budget(self, budget_id, description, amount):

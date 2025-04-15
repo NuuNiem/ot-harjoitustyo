@@ -834,20 +834,16 @@ files = [
 ]
 
 [[package]]
-name = "sv_ttk"
+name = "sv-ttk"
 version = "2.6.0"
 description = "A gorgeous theme for Tkinter, based on Windows 11's UI"
 optional = false
 python-versions = ">=3.8"
 groups = ["main"]
-files = []
-develop = false
-
-[package.source]
-type = "git"
-url = "https://github.com/rdbende/Sun-Valley-ttk-theme.git"
-reference = "HEAD"
-resolved_reference = "7cd2d340a90aceac0c0c6fd5689e2edacbf6e56f"
+files = [
+    {file = "sv_ttk-2.6.0-py3-none-any.whl", hash = "sha256:4319c52edf2e14732fe84bdc9788e26f9e9a1ad79451ec0f89f0120ffc8105d9"},
+    {file = "sv_ttk-2.6.0.tar.gz", hash = "sha256:3fd440396c95e30e88f686fcf28be425480f7320d6bf346f9cea5d6f56702cc2"},
+]
 
 [[package]]
 name = "tk"
@@ -932,4 +928,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10"
-content-hash = "a3fc34f468413e52e8837beb8316cacd31147efc42bd99e0c475a8618be2a330"
+content-hash = "d78768ea2594cc4619b2e96e39b6db4af0b8e70385af17a884af8728326149c9"
