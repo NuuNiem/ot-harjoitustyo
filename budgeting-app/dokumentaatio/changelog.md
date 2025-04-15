@@ -4,4 +4,13 @@
 
 - Käyttäjä voi rekisteröityä ja kirjautua sisään
 - Yhdistetty tietokanta ja otettu se käyttöön
-- simppeli ui alkuun
+- simppeli käyttöliittymä alkuun
+
+## Viikko 4
+
+- Pylint käyttöön
+- käyttöliittymä paremmaksi
+
+## Viikko 5
+
+

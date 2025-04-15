@@ -1,6 +1,10 @@
 import tkinter as tk
 from tkinter import ttk
 from ui.login_view import LoginView
+from ui.menu import Menu
+from ui.manage_view import ManageBudgetView
+import sv_ttk
+
 
 class BudgetingUI:
     def __init__(self, root, budgeting_service):
@@ -9,54 +13,60 @@ class BudgetingUI:
         self._current_view = None
         self._current_user = None
         self._initialize_styles()
-    
+
     def _initialize_styles(self):
         self._style = ttk.Style()
         self._available_themes = self._style.theme_names()
-        # Default themes include: 'alt', 'clam', 'classic', 'default', 'vista'
-        
-        # Set a theme (e.g., 'clam' is often darker)
-        self._style.theme_use('alt')  # You can change this to any available theme
-        
-        # Additional style configurations
+
+        sv_ttk.set_theme("dark")
+
+        self._style.configure("Link.TLabel", foreground="blue",
+                              cursor="hand2", font=("Arial", 12))
         self._style.configure("Header.TLabel", font=("Arial", 16, "bold"))
-    
+        self._style.configure("SubHeader.TLabel", font=("Arial", 14, "bold"))
+        self._style.configure("Body.TLabel", font=("Arial", 12))
+        self._style.configure("Accent.TButton", font=("Arial", 12))
+        self._style.configure("Secondary.TButton", font=("Arial", 11))
+        self._style.configure("Main.TFrame", padding=20)
+        self._style.configure("Card.TFrame", padding=15, relief="raised")
+        self._style.configure("Standard.TEntry", font=("Arial", 12))
+        self._style.configure("Standard.TListbox", font=("Arial", 12))
+
     def start(self):
         self._show_login_view()
-    
-    def _show_login_view(self):
+
+    def _hide_current_view(self):
         if self._current_view:
             self._current_view.destroy()
-        
+        self._current_view = None
+
+    def _show_login_view(self):
+        self._hide_current_view()
         self._current_view = LoginView(
-            self._root, 
+            self._root,
             self._budgeting_service,
             self._handle_successful_login
         )
-    
+
     def _handle_successful_login(self, username):
         self._current_user = username
-        self._show_budget_view()
-    
-    def _show_budget_view(self):
-        if self._current_view:
-            self._current_view.destroy()
-            
-        frame = ttk.Frame(self._root, padding=20)
-        ttk.Label(
-            frame, 
-            text=f"Welcome, {self._current_user}!\nYou are now logged in.",
-            font=("Arial", 14)
-        ).pack(pady=20)
-        
-        ttk.Button(
-            frame, 
-            text="Logout",
-            command=self._show_login_view
-        ).pack(pady=10)
-        
-        frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+        self._show_main_menu()
 
-        self._current_view = type('SimpleView', (), {
-            'destroy': lambda: frame.place_forget()
-        })()
+    def _show_main_menu(self):
+        self._hide_current_view()
+        self._current_view = Menu(
+            self._root,
+            self._budgeting_service,
+            self._current_user,
+            self._show_login_view,
+            self._show_manage_budgets_view
+        )
+
+    def _show_manage_budgets_view(self):
+        self._hide_current_view()
+        self._current_view = ManageBudgetView(
+            self._root,
+            self._budgeting_service,
+            self._current_user,
+            self._show_main_menu
+        )
