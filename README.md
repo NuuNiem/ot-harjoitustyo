@@ -3,7 +3,7 @@
 Sovelluksen avulla käyttäjien on mahdollista luoda, hallita ja tarkastella budjetteja. 
 
 ## Dokumentaatio
-. [Arkkitehtuurikuvaus](./budgeting-app/dokumentaatio/arkkitehtuuri.md)
+- [Arkkitehtuurikuvaus](./budgeting-app/dokumentaatio/arkkitehtuuri.md)
 - [Vaatimusmäärittely](./budgeting-app/dokumentaatio/vaatimusmaarittely.md)
 - [Työaikakirjanpito](./budgeting-app/dokumentaatio/tuntikirjanpito.md)
 - [Changelog](./budgeting-app/dokumentaatio/changelog.md)
