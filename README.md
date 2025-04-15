@@ -3,6 +3,7 @@
 Sovelluksen avulla käyttäjien on mahdollista luoda, hallita ja tarkastella budjetteja. 
 
 ## Dokumentaatio
+. [Arkkitehtuurikuvaus](./budgeting-app/dokumentaatio/arkkitehtuuri.md)
 - [Vaatimusmäärittely](./budgeting-app/dokumentaatio/vaatimusmaarittely.md)
 - [Työaikakirjanpito](./budgeting-app/dokumentaatio/tuntikirjanpito.md)
 - [Changelog](./budgeting-app/dokumentaatio/changelog.md)
@@ -14,7 +15,6 @@ Sovelluksen avulla käyttäjien on mahdollista luoda, hallita ja tarkastella bud
 ```bash
 cd budgeting-app
 ```
-
 2. Asenna riippuvuudet komennolla:
    
 ```bash
