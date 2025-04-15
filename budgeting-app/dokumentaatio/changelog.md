@@ -12,5 +12,8 @@
 - käyttöliittymä paremmaksi
 
 ## Viikko 5
-
+- sovelluslogiikka budjettien hallinnassa
+- käyttöliittymän siirtymät
+- budjettien näyttäminen
+- testejä lisää
 
