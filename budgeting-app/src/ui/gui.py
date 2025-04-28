@@ -21,16 +21,16 @@ class BudgetingUI:
         sv_ttk.set_theme("dark")
 
         self._style.configure("Link.TLabel", foreground="blue",
-                              cursor="hand2", font=("Arial", 12))
-        self._style.configure("Header.TLabel", font=("Arial", 16, "bold"))
-        self._style.configure("SubHeader.TLabel", font=("Arial", 14, "bold"))
-        self._style.configure("Body.TLabel", font=("Arial", 12))
-        self._style.configure("Accent.TButton", font=("Arial", 12))
-        self._style.configure("Secondary.TButton", font=("Arial", 11))
+                              cursor="hand2", font=("Liberation Sans", 12))
+        self._style.configure("Header.TLabel", font=("Liberation Sans", 16, "bold"))
+        self._style.configure("SubHeader.TLabel", font=("Liberation Sans", 14, "bold"))
+        self._style.configure("Body.TLabel", font=("Liberation Sans", 12))
+        self._style.configure("Accent.TButton", font=("Liberation Sans", 12))
+        self._style.configure("Secondary.TButton", font=("Liberation Sans", 11))
         self._style.configure("Main.TFrame", padding=20)
         self._style.configure("Card.TFrame", padding=15, relief="raised")
-        self._style.configure("Standard.TEntry", font=("Arial", 12))
-        self._style.configure("Standard.TListbox", font=("Arial", 12))
+        self._style.configure("Standard.TEntry", font=("Liberation Sans", 12))
+        self._style.configure("Standard.TListbox", font=("Liberation Sans", 12))
 
     def start(self):
         self._show_login_view()
