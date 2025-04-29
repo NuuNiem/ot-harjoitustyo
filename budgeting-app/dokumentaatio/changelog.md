@@ -17,3 +17,7 @@
 - budjettien näyttäminen
 - testejä lisää
 
+## Viikko 6
+- budjettien hallintanäkymä selkeäksi
+- kirjautumisen korjaus/parantaminen
+- docstring dokumentointi
