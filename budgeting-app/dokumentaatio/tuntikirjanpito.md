@@ -12,7 +12,7 @@
 | 15.4. | 5,5  | Logiikan eriyttämistä ja lisää testejä
 | 22.4. | 1,5 | tutustuminen matplotlibiin
 | 25.4. | 1   | fontin korjaus 
-| 28.4. | 3  | budjetitinäkymä uusiksi
+| 28.4. | 3  | budjettinäkymä uusiksi
 | 29.4. | 2 | docstring ja korjauksia
 
 **Yhteensä 32h**
