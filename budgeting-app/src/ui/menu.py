@@ -56,7 +56,7 @@ class Menu:
         self._menu_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
     def _handle_logout(self):
-        if messagebox.askyesno("Are you sure you want to log out?"):
+        if messagebox.askyesno("Log out", "Are you sure you want to log out?"):
             self._logout_callback()
 
     def destroy(self):

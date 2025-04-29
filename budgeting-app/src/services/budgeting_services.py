@@ -11,10 +11,10 @@ class BudgetingService:
     def register_user(self, username, password=""):
         return self._user_repository.create(username, password)
 
-    def get_user(self, username):
-        user = self._user_repository.find_by_username(username)
+    def get_user(self, username, password=None):
+        user = self._user_repository.find_by_username(username, password)
         if not user:
-            raise ValueError("User not found")
+            raise ValueError("User not found or password incorrect")
         self._current_user = username
         return user
 

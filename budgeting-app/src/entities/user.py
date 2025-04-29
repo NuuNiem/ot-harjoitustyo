@@ -2,8 +2,17 @@ from .budgeting import Budgeting
 
 
 class User:
-    def __init__(self, username):
+    """Luokka, joka kuvaa yksittäistä käyttäjää.
+
+    Attributes:
+        username: Merkkijonoarvo, joka kuvaa käyttäjän käyttäjätunnusta.
+        password: Merkkijonoarvo, joka kuvaa käyttäjän salasanaa.
+        budgets: Lista, joka sisältää käyttäjän budjetit.
+    """
+
+    def __init__(self, username, password):
         self.username = username
+        self.password = password
         self.budgets = []
 
     def create_budget(self, name, total_amount):
