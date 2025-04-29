@@ -6,22 +6,21 @@ Tämän budjetointisovelluksen avulla käyttäjien on mahdollista hallita talout
 
 ## Käyttäjät
 
-Käyttäjä luo tunnuksen, joka on suojattu salasanalla hänen halutessaan
+Käyttäjä luo tunnuksen, kaikilla samat oikeudet
 
 ## Perusversion tarjoama toiminnallisuus
 
 ### Ennen kirjautumista
 
-- Käyttäjä luo profiilin, joka on hänen halutessaan salasanan takana *tehty*
-- Jatkossa kirjautuminen automaattisesti/salasanan kautta *tehty*
+- Käyttäjä luo profiilin, joka on hänen halutessaan salasanan takana **tehty**
+- Jatkossa kirjautuminen automaattisesti/salasanan kautta **tehty**
 
 ### Kirjautumisen jälkeen
 
-- tulojen ja menojen lisääminen sekä muokkaaminen *tehty*
-- yhteenveto henkilökohtaisesta taloustilanteesta
+- tulojen ja menojen lisääminen sekä muokkaaminen **tehty**
+- yhteenveto henkilökohtaisesta taloustilanteesta **tehty**
+- useiden budjettien hallinta **tehty**
 - graafinen esitys budjetista
 
 ## Jatkokehitysideoita
-
-- useiden budjettien hallinta
 - menot kategorioittain
