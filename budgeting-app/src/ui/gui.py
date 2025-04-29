@@ -31,13 +31,13 @@ class BudgetingUI:
 
         self._style.configure("Link.TLabel",
                               cursor="hand2",
-                              font=("Ubuntu", 11))
+                              font=("Liberation Sans", 11))
 
         self._style.configure("Header.TLabel",
-                              font=("Ubuntu", 16, "bold"))
+                              font=("Liberation Sans", 16, "bold"))
 
         self._style.configure("SubHeader.TLabel",
-                              font=("Ubuntu", 14, "bold"))
+                              font=("Liberation Sans", 14, "bold"))
 
     def start(self):
         """Käynnistää käyttöliittymän näyttämällä kirjautumisnäkymän."""
