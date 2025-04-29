@@ -34,8 +34,8 @@ class BudgetingService:
                     "Invalid amount format. Please enter a number.") from e
             raise
 
-    def add_budget_to_user(self, username, budget_name, total_amount):
-        return self._budget_repository.create(budget_name, total_amount, username)
+    def add_budget_to_user(self, username, name, amount):
+        return self._budget_repository.create(name, amount, username)
 
     def get_user_budgets(self, username):
         return self._budget_repository.find_all_by_username(username)
@@ -49,33 +49,14 @@ class BudgetingService:
     def get_budget_expenses(self, budget_id):
         return self._budget_repository.get_budget_expenses(budget_id)
 
-    def validate_and_add_expense(self, budget_id, description, amount_str):
-        if not description:
-            raise ValueError("Expense description cannot be empty")
-
-        try:
-            amount = float(amount_str)
-            if amount <= 0:
-                raise ValueError("Expense amount must be positive")
-
-            return self.add_expense_to_budget(budget_id, description, amount)
-        except ValueError as e:
-            if "could not convert string to float" in str(e).lower():
-                raise ValueError(
-                    "Invalid amount format. Please enter a number.") from e
-            raise
-
-    def add_expense_to_budget(self, budget_id, description, amount):
-        if not description or description.isspace():
-            raise ValueError("Expense description cannot be empty")
-
-        if amount <= 0:
-            raise ValueError("Expense amount must be positive")
-
-        return self._budget_repository.add_expense(budget_id, description, amount)
-
     def get_budget_data_for_display(self, username):
         budgets = self.get_user_budgets(username)
         budget_map = {budget.name: budget for budget in budgets}
 
         return budgets, budget_map
+
+    def remove_expense(self, expense_id):
+        return self._budget_repository.remove_expense(expense_id)
+
+    def remove_budget(self, budget_id):
+        return self._budget_repository.remove_budget(budget_id)

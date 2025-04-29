@@ -73,13 +73,12 @@ class RegisterView:
         username = self._reg_username_entry.get()
         password = self._reg_password_entry.get()
 
-        if not username:
+        if username == "Username" or password == "Password" or len(username) == 0 or len(password) == 0:
             messagebox.showerror("Registration Error",
-                                 "Username cannot be empty.")
+                                 "Username and password is required")
             return
-
         try:
-            self._budgeting_service.register_user(username)
+            self._budgeting_service.register_user(username, password)
             messagebox.showinfo("Registration Successful",
                                 "Your account has been created.")
             self._handle_back_to_login()

@@ -12,25 +12,23 @@ class BudgetingUI:
         self._budgeting_service = budgeting_service
         self._current_view = None
         self._current_user = None
+
+        sv_ttk.set_theme("dark")
+
         self._initialize_styles()
 
     def _initialize_styles(self):
         self._style = ttk.Style()
-        self._available_themes = self._style.theme_names()
 
-        sv_ttk.set_theme("dark")
+        self._style.configure("Link.TLabel",
+                              cursor="hand2",
+                              font=("Ubuntu", 11))
 
-        self._style.configure("Link.TLabel", foreground="blue",
-                              cursor="hand2", font=("Liberation Sans", 12))
-        self._style.configure("Header.TLabel", font=("Liberation Sans", 16, "bold"))
-        self._style.configure("SubHeader.TLabel", font=("Liberation Sans", 14, "bold"))
-        self._style.configure("Body.TLabel", font=("Liberation Sans", 12))
-        self._style.configure("Accent.TButton", font=("Liberation Sans", 12))
-        self._style.configure("Secondary.TButton", font=("Liberation Sans", 11))
-        self._style.configure("Main.TFrame", padding=20)
-        self._style.configure("Card.TFrame", padding=15, relief="raised")
-        self._style.configure("Standard.TEntry", font=("Liberation Sans", 12))
-        self._style.configure("Standard.TListbox", font=("Liberation Sans", 12))
+        self._style.configure("Header.TLabel",
+                              font=("Ubuntu", 16, "bold"))
+
+        self._style.configure("SubHeader.TLabel",
+                              font=("Ubuntu", 14, "bold"))
 
     def start(self):
         self._show_login_view()

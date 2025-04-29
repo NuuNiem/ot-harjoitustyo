@@ -48,11 +48,11 @@ class TestBudgetingService(unittest.TestCase):
         self.assertEqual(str(context.exception),
                          "Budget amount must be positive")
 
-    def test_add_expense_to_budget(self):
+    def test_add_expense(self):
         expense_desc = "Ruokakauppa"
         expense_amount = 50.0
 
-        expense = self.service.add_expense_to_budget(
+        expense = self.service.add_expense(
             self.budget1.id, expense_desc, expense_amount
         )
 
@@ -63,11 +63,11 @@ class TestBudgetingService(unittest.TestCase):
         expenses = self.service.get_budget_expenses(self.budget1.id)
         self.assertEqual(len(expenses), 1)
 
-    def test_validate_and_add_expense(self):
+    def test_add_expense_with_string_amount(self):
         expense_desc = "Lätkämatsi"
         expense_amount = "25.50"
 
-        expense = self.service.validate_and_add_expense(
+        expense = self.service.add_expense(
             self.budget2.id, expense_desc, expense_amount
         )
 

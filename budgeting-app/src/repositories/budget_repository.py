@@ -68,11 +68,10 @@ class BudgetRepository:
         return self._row_to_budget(row)
 
     def get_budget_expenses(self, budget_id):
-
         cursor = self._connection.cursor()
 
         cursor.execute(
-            "SELECT description, amount FROM expenses WHERE budget_id = ?",
+            "SELECT id, description, amount FROM expenses WHERE budget_id = ?",
             (budget_id,)
         )
 
@@ -81,7 +80,7 @@ class BudgetRepository:
         return [Expense(
             expense["description"],
             expense["amount"],
-            None,  # No ID
+            expense["id"],
             budget_id
         ) for expense in expenses]
 
@@ -119,6 +118,7 @@ class BudgetRepository:
             (budget_id,)
         )
 
+        amount = float(amount) if isinstance(amount, str) else amount
         spent_row = cursor.fetchone()
         spent_amount = spent_row[0] if spent_row[0] else 0
 
@@ -130,6 +130,26 @@ class BudgetRepository:
         cursor.execute(
             "INSERT INTO expenses (description, amount, budget_id) VALUES (?, ?, ?)",
             (description, amount, budget_id)
+        )
+
+    def remove_expense(self, expense_id):
+
+        cursor = self._connection.cursor()
+
+        cursor.execute(
+            "DELETE FROM expenses WHERE id = ?",
+            (expense_id,)
+        )
+
+    def remove_budget(self, budget_id):
+        cursor = self._connection.cursor()
+        cursor.execute(
+            "DELETE FROM expenses WHERE budget_id = ?",
+            (budget_id,)
+        )
+        cursor.execute(
+            "DELETE FROM budgets WHERE id = ?",
+            (budget_id,)
         )
 
         self._connection.commit()

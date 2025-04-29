@@ -18,36 +18,45 @@ class Menu:
         for widget in self._main_frame.winfo_children():
             widget.destroy()
 
-        self._menu_frame = ttk.Frame(self._main_frame, style="Main.TFrame")
+        self._menu_frame = ttk.Frame(self._main_frame)
 
         if self._username:
             welcome_label = ttk.Label(
                 self._menu_frame,
                 text=f"Welcome, {self._username}!",
-                style="SubHeader.TLabel")
+                style="SubHeader.TLabel",
+            )
+
             welcome_label.grid(row=0, column=0, pady=(0, 30))
 
         manage_budgets_btn = ttk.Button(
             self._menu_frame,
             text="Manage Budgets",
             command=self._manage_budgets_callback,
-            style="Primary.TButton",
             width=15
         )
-        manage_budgets_btn.grid(row=1, column=0, pady=5)
+
+        visualise_budgets_btn = ttk.Button(
+            self._menu_frame,
+            text="Visualise Budgets",
+            width=15
+        )
+
+        visualise_budgets_btn.grid(row=1, column=0, pady=(5))
+        manage_budgets_btn.grid(row=2, column=0, pady=5)
 
         logout_btn = ttk.Button(
             self._menu_frame,
-            text="Logout",
+            text="Log out",
             command=self._handle_logout,
             style="Secondary.TButton"
         )
-        logout_btn.grid(row=2, column=0, pady=(20, 0))
+        logout_btn.grid(row=3, column=0, pady=(20, 0))
 
         self._menu_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
     def _handle_logout(self):
-        if messagebox.askyesno("Logout", "Are you sure you want to logout?"):
+        if messagebox.askyesno("Are you sure you want to log out?"):
             self._logout_callback()
 
     def destroy(self):

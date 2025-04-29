@@ -58,7 +58,7 @@ class LoginView:
         register_label = ttk.Label(
             self._frame,
             text="No account yet? Click here",
-            style="Link.TLabel"
+            style="Link.TLabel",
         )
         register_label.grid(row=4, column=0, pady=10)
         register_label.bind("<Button-1>", lambda e: self._show_register_view())
@@ -86,7 +86,6 @@ class LoginView:
 
         try:
             user = self._budgeting_service.get_user(username)
-            messagebox.showinfo("Login Successful", f"Welcome, {username}!")
 
             self.destroy()
             self._handle_login(username)
