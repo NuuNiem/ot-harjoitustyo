@@ -21,3 +21,10 @@
 - budjettien hallintanäkymä selkeäksi
 - kirjautumisen korjaus/parantaminen
 - docstring dokumentointi
+
+## Viikko 7
+
+- testit kuntoon sekä lisää testejä
+- sovelluksen testaamista
+- koodin siistiminen, vanhoiksi jääneistä metodeista
+- poetry install komennon toiminta kuntoon
