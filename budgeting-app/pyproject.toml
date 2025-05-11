@@ -1,25 +1,18 @@
-[project]
+[tool.poetry]
 name = "budgeting-app"
 version = "0.1.0"
 description = ""
-authors = [
-    {name = "NuuNiem",email = "nuutti.a.niemela@helsinki.fi"}
-]
-readme = "README.md"
-requires-python = ">=3.10"
-dependencies = [
-    "cowsay (>=6.1,<7.0)",
-    "tk",
-    "pylint (>=3.3.6,<4.0.0)",
-    "invoke (>=2.2.0,<3.0.0)",
-    "matplotlib (>=3.10.1,<4.0.0)",
-    "sv-ttk (>=2.6.0,<3.0.0)",
-]
+authors = ["NuuNiem <nuutti.a.niemela@helsinki.fi>"]
+packages = [{ include = "src" }]
 
-
-[build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
-build-backend = "poetry.core.masonry.api"
+[tool.poetry.dependencies]
+python = ">=3.10"
+cowsay = ">=6.1,<7.0"
+tk = "*"
+pylint = ">=3.3.6,<4.0.0"
+invoke = ">=2.2.0,<3.0.0"
+matplotlib = ">=3.10.1,<4.0.0"
+sv-ttk = ">=2.6.0,<3.0.0"
 
 [tool.poetry.group.dev.dependencies]
 pylint = "^3.3.6"
@@ -27,3 +20,6 @@ pytest = "^8.3.5"
 coverage = "^7.8.0"
 autopep8 = "^2.3.2"
 
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
