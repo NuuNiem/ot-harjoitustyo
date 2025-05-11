@@ -24,3 +24,4 @@ Esimerkiksi BudgetRepository-testeissä testataan:
 - Käyttöliittymän Tkinter-komponentteja ei testata automaattisesti. Sen toimintaa on testattu manuaalisesti eri käyttötilanteissa.
 
 ## Kattavuus
+![](./testit.png)
