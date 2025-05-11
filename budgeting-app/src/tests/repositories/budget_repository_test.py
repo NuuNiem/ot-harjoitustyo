@@ -12,7 +12,7 @@ class TestBudgetRepository(unittest.TestCase):
         self._create_tables()
 
         self.connection.execute(
-            "INSERT INTO users (username, password) VALUES (?, ?)", ("kayttaja", "666"))
+            "INSERT INTO users (username, password) VALUES (?, ?)", ("markku", "666"))
         self.connection.commit()
 
     def _create_tables(self):
