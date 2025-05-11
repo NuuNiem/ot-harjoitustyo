@@ -12,15 +12,15 @@ Käyttäjä luo tunnuksen, kaikilla samat oikeudet
 
 ### Ennen kirjautumista
 
-- Käyttäjä luo profiilin, joka on hänen halutessaan salasanan takana **tehty**
-- Jatkossa kirjautuminen automaattisesti/salasanan kautta **tehty**
+- Käyttäjä luo tunnuksen **tehty**
+- Jatkossa kirjautuminen käyttätunnuksella ja salasanalla **tehty**
 
 ### Kirjautumisen jälkeen
 
 - tulojen ja menojen lisääminen sekä muokkaaminen **tehty**
 - yhteenveto henkilökohtaisesta taloustilanteesta **tehty**
 - useiden budjettien hallinta **tehty**
-- graafinen esitys budjetista
 
 ## Jatkokehitysideoita
 - menot kategorioittain
+- graafinen esitys budjetista

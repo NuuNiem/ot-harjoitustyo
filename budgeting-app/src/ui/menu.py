@@ -36,13 +36,6 @@ class Menu:
             width=15
         )
 
-        visualise_budgets_btn = ttk.Button(
-            self._menu_frame,
-            text="Visualise Budgets",
-            width=15
-        )
-
-        visualise_budgets_btn.grid(row=1, column=0, pady=(5))
         manage_budgets_btn.grid(row=2, column=0, pady=5)
 
         logout_btn = ttk.Button(

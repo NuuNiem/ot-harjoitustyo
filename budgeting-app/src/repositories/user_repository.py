@@ -73,10 +73,10 @@ class UserRepository:
         """
         cursor = self._connection.cursor()
 
-        cursor.execute("SELECT username FROM users")
+        cursor.execute("SELECT username, password FROM users")
         rows = cursor.fetchall()
 
-        return [User(row["username"]) for row in rows]
+        return [User(row["username"], row["password"]) for row in rows]
 
     def delete_all(self):
         """Poistaa kaikki käyttäjät tietokannasta.

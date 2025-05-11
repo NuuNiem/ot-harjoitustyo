@@ -3,7 +3,7 @@ from database_connection import get_database_connection
 
 def drop_tables(connection):
     """Poistaa tietokantataulut.
-    
+
     Args:
         connection: = Tietokantayhteyden Connection-olio.
     """

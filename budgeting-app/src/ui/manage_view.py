@@ -6,6 +6,7 @@ from ui.components.budget_summary import BudgetSummary
 from ui.components.expense_history import ExpenseHistory
 from ui.components.budget_selector import BudgetSelector
 
+
 class ManageBudgetView:
     """Budjettien hallintanäkymästä vastaava luokka."""
 

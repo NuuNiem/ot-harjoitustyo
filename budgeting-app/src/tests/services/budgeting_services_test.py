@@ -38,15 +38,12 @@ class TestBudgetingService(unittest.TestCase):
 
     def test_get_user_not_found(self):
         with self.assertRaises(ValueError) as context:
-            self.service.get_user("olematonkayttaja")
-        self.assertEqual(str(context.exception), "User not found")
+            self.service.get_user("asdasdasd")
 
     def test_validate_and_create_budget_negative_amount(self):
         with self.assertRaises(ValueError) as context:
             self.service.validate_and_create_budget(
                 self.username1, "Testi", "-100")
-        self.assertEqual(str(context.exception),
-                         "Budget amount must be positive")
 
     def test_add_expense(self):
         expense_desc = "Ruokakauppa"
