@@ -36,14 +36,46 @@ class TestBudgetingService(unittest.TestCase):
         user = self.service.register_user(new_username, "uusisalasana")
         self.assertEqual(user.username, new_username)
 
+    def test_get_user_found(self):
+        user = self.service.get_user(self.username1)
+        self.assertIsNotNone(user)
+        self.assertEqual(user.username, self.username1)
+
     def test_get_user_not_found(self):
         with self.assertRaises(ValueError) as context:
             self.service.get_user("asdasdasd")
+
+    def test_validate_and_create_budget_empty_name(self):
+        with self.assertRaises(ValueError) as context:
+            self.service.validate_and_create_budget(self.username1, "", "100")
+
+    def test_validate_and_create_budget_zero_amount(self):
+        with self.assertRaises(ValueError) as context:
+            self.service.validate_and_create_budget(
+                self.username1, "Testi", "0")
 
     def test_validate_and_create_budget_negative_amount(self):
         with self.assertRaises(ValueError) as context:
             self.service.validate_and_create_budget(
                 self.username1, "Testi", "-100")
+
+    def test_validate_and_create_budget_invalid_amount_format(self):
+        with self.assertRaises(ValueError) as context:
+            self.service.validate_and_create_budget(
+                self.username1, "Testi", "ei_numero")
+        self.assertIn("Invalid amount format", str(context.exception))
+
+    def test_validate_and_create_budget_other_valueerror(self):
+        orig_add_budget = self.service.add_budget_to_user
+
+        def raise_other_valueerror(username, name, amount):
+            raise ValueError("Virhe")
+        self.service.add_budget_to_user = raise_other_valueerror
+        with self.assertRaises(ValueError) as context:
+            self.service.validate_and_create_budget(
+                self.username1, "Testi", "10")
+        self.assertIn("Virhe", str(context.exception))
+        self.service.add_budget_to_user = orig_add_budget
 
     def test_add_expense(self):
         expense_desc = "Ruokakauppa"
@@ -53,9 +85,9 @@ class TestBudgetingService(unittest.TestCase):
             self.budget1.id, expense_desc, expense_amount
         )
 
-        if expense:
-            self.assertEqual(expense.description, expense_desc)
-            self.assertEqual(expense.amount, expense_amount)
+        self.assertIsNotNone(expense)
+        self.assertEqual(expense.description, expense_desc)
+        self.assertEqual(expense.amount, expense_amount)
 
         expenses = self.service.get_budget_expenses(self.budget1.id)
         self.assertEqual(len(expenses), 1)
@@ -68,9 +100,9 @@ class TestBudgetingService(unittest.TestCase):
             self.budget2.id, expense_desc, expense_amount
         )
 
-        if expense:
-            self.assertEqual(expense.description, expense_desc)
-            self.assertEqual(expense.amount, float(expense_amount))
+        self.assertIsNotNone(expense)
+        self.assertEqual(expense.description, expense_desc)
+        self.assertEqual(expense.amount, float(expense_amount))
 
         expenses = self.service.get_budget_expenses(self.budget2.id)
         self.assertEqual(len(expenses), 1)

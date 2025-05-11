@@ -132,16 +132,6 @@ class BudgetRepository:
         return budget
 
     def add_expense(self, budget_id, description, amount):
-        """Lisää uuden kulun budjettiin.
-
-        Args:
-            budget_id: Budjetin tunniste.
-            description: Kulun kuvaus.
-            amount: Kulun määrä.
-
-        Raises:
-            ValueError: Jos budjettia ei löydy tai kulun määrä ylittää budjetin.
-        """
         cursor = self._connection.cursor()
         cursor.execute(
             "SELECT total_amount FROM budgets WHERE id = ?",
@@ -164,6 +154,9 @@ class BudgetRepository:
             "INSERT INTO expenses (description, amount, budget_id) VALUES (?, ?, ?)",
             (description, amount, budget_id)
         )
+        self._connection.commit()
+        expense_id = cursor.lastrowid
+        return Expense(description, amount, expense_id, budget_id)
 
     def remove_expense(self, expense_id):
         """Poistaa kulun budjetista.

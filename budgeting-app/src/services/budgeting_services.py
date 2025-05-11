@@ -34,14 +34,14 @@ class BudgetingService:
                     "Invalid amount format. Please enter a number.") from e
             raise
 
+    def add_expense(self, budget_id, description, amount):
+        return self._budget_repository.add_expense(budget_id, description, amount)
+
     def add_budget_to_user(self, username, name, amount):
         return self._budget_repository.create(name, amount, username)
 
     def get_user_budgets(self, username):
         return self._budget_repository.find_all_by_username(username)
-
-    def add_expense(self, budget_id, description, amount):
-        return self._budget_repository.add_expense(budget_id, description, amount)
 
     def get_budget_by_id(self, budget_id):
         return self._budget_repository.get_budget_by_id(budget_id)

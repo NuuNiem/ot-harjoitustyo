@@ -16,17 +16,14 @@ class TestUserRepository(unittest.TestCase):
         self.assertIsNotNone(user)
         self.assertEqual(user.username, self.user_testi1.username)
 
-    def test_find_all(self):
+    def test_find_all_users(self):
         user_repository.create(self.user_testi1.username, "salasana123")
         user_repository.create(self.user_testi2.username, "salasana321")
-
-        user1 = user_repository.find_by_username(self.user_testi1.username)
-        user2 = user_repository.find_by_username(self.user_testi2.username)
-
-        self.assertIsNotNone(user1)
-        self.assertIsNotNone(user2)
-        self.assertEqual(user1.username, self.user_testi1.username)
-        self.assertEqual(user2.username, self.user_testi2.username)
+        users = user_repository.find_all()
+        usernames = [u.username for u in users]
+        self.assertIn(self.user_testi1.username, usernames)
+        self.assertIn(self.user_testi2.username, usernames)
+        self.assertEqual(len(users), 2)
 
     def test_find_by_username(self):
         user_repository.create(self.user_testi1.username, "salasana123")
@@ -35,3 +32,14 @@ class TestUserRepository(unittest.TestCase):
 
         self.assertIsNotNone(user)
         self.assertEqual(user.username, self.user_testi1.username)
+
+    def test_create_duplicate_user(self):
+        user_repository.create(self.user_testi1.username, "salasana123")
+        with self.assertRaises(Exception):
+            user_repository.create(self.user_testi1.username, "toinensalasana")
+
+    def test_delete_all_users(self):
+        user_repository.create(self.user_testi1.username, "salasana123")
+        user_repository.delete_all()
+        user = user_repository.find_by_username(self.user_testi1.username)
+        self.assertIsNone(user)
