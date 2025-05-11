@@ -2,7 +2,14 @@
 ## Rakenne
 
 Ohjelma noudattaa kolmitasoista kerrosarkkitehtuuria. Koodin pakkausrakenne seuraavanlainen: 
-*kuva tulossa*
+
+![image](https://github.com/user-attachments/assets/68ad9c3d-7350-4d40-b6a4-303f388c1e18)
+
+Rakenne jakautuu seuraavasti:
+- ui: Sisältää käyttöliittymästä vastaavan koodin
+- services: Sisältää sovelluslogiikasta vastaavan koodin
+- repositories: Sisältää tietojen pysyväistallennuksesta vastaavan koodin
+- entities: Sisältää luokkia, jotka kuvastavat sovelluksen käyttämiä tietokohteita
 
 ## Käyttöliittymä
 
@@ -12,11 +19,61 @@ Käyttöliittymässä on neljä eri näkymää:
 - uuden käyttäjän rekisteröinti
 - valikko
 - budjettien hallinta
-- budjettien visualisointi
 
-Näkymistä yksi on aina kerrallaan näkyvissä. Näkymien hallinnasta vastaa BudgetingUI-luokka. Käyttöliittymä on pyritty eristämään sovelluslogiikasta: se ainoastaan kutsuu BudgetingService-luokan metodeja.
+Näkymistä yksi on aina kerrallaan näkyvissä. Näkymien hallinnasta vastaa BudgetingUI-luokka. Käyttöliittymä on pyritty eristämään sovelluslogiikasta: se ainoastaan kutsuu BudgetingService-luokan metodeja. Sovelluksen tilan muuttuessa (esim. käyttäjä kirjautuu, budjetti tai kulu lisätään/poistetaan), näkymä päivitetään kutsumalla näkymän omaa päivitysmetodia, joka hakee tarvittavat tiedot sovelluslogiikalta ja rendaa näkymän uudelleen.
 
-Kun sovelluksen tila muuttuu (esim. käyttäjä kirjautuu, budjetti tai kulu lisätään/poistetaan), näkymä päivitetään kutsumalla näkymän omaa päivitysmetodia, joka hakee tarvittavat tiedot sovelluslogiikalta ja rendaa näkymän uudelleen.
+## Päätoiminnallisuudet
+### Rekisteröityminen
+```mermaid
+sequenceDiagram
+  actor User
+  participant UI
+  participant BudgetingService
+  participant UserRepository
+  participant newUser
+  User->>UI: click "Register" button
+  UI->>BudgetingService: register_user("username", "password")
+  BudgetingService->>UserRepository: find_by_username("username")
+  UserRepository-->>BudgetingService: None
+  BudgetingService->>newUser: User("username", "password")
+  BudgetingService->>UserRepository: create(username, password)
+  UserRepository-->>BudgetingService: user
+  BudgetingService-->>UI: user
+  UI->>UI: _show_login_after_register()
+```
+### Kirjautuminen
+```mermaid
+sequenceDiagram
+  actor User
+  participant UI
+  participant BudgetingService
+  participant UserRepository
+  User->>UI: click "Login" button
+  UI->>BudgetingService: get_user("username", "password")
+  BudgetingService->>UserRepository: find_by_username("username", "password")
+  UserRepository-->>BudgetingService: user
+  BudgetingService-->>UI: user
+  UI->>UI: show_main_menu()
+```
+### Uuden budjetin luominen
+```mermaid
+sequenceDiagram
+  actor User
+  participant UI
+  participant BudgetingService
+  participant BudgetRepository
+  participant budget
+  User->>UI: click "Add Budget"
+  User->>UI: input budget name "Vuokra"
+  User->>UI: input budget amount "1000"
+  User->>UI: click "Add Budget"
+  UI->>BudgetingService: add_budget_to_user("username", "Vuokra", 1000.0)
+  BudgetingService->>BudgetRepository: create("Vuokra", 1000.0, "username")
+  BudgetRepository-->>BudgetingService: budget
+  BudgetingService-->>UI: budget
+  UI->>UI: _load_data()
+```
+
   
 ## Luokkakaavio
 ```mermaid
@@ -73,27 +130,4 @@ classDiagram
     UserRepository --> User
     BudgetRepository --> Budgeting
     BudgetRepository --> Expense
-```
-
-## Sekvenssikaavio
-Uuden budjetin luominen
-```mermaid
-sequenceDiagram
-  actor User
-  participant UI
-  participant BudgetingService
-  participant BudgetRepository
-
-  User->>UI: click "New Budget" button
-  UI->UI: show_create_budget_view()
-  User->>UI: input budget name "Vuokra"
-  User->>UI: input budget amount "1000"
-  User->>UI: click "Create" button
-  UI->>BudgetingService: validate_and_create_budget("Vuokra", 1000, "Keijo")
-  BudgetingService->>BudgetingService: validate budget data
-  BudgetingService->>BudgetRepository: create("Vuokra", 1000, "Keijo")
-  BudgetRepository-->>BudgetingService: new_budget
-  BudgetingService-->>UI: new_budget
-  UI->UI: show_budget_view(new_budget.id)
-  UI->UI: display remaining budget: 1000
 ```
