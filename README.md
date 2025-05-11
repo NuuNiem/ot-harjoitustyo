@@ -1,10 +1,12 @@
 # Ohjelmistotekniikka, harjoitustyö
 
-Sovelluksen avulla käyttäjien on mahdollista luoda, hallita ja tarkastella budjetteja. 
+Sovelluksen avulla käyttäjien on mahdollista luoda, hallita ja tarkastella budjetteja.
 
 ## Dokumentaatio
-- [Arkkitehtuurikuvaus](./budgeting-app/dokumentaatio/arkkitehtuuri.md)
+- [Käyttöohje](./budgeting-app/dokumentaatio/kayttoohje.md)
 - [Vaatimusmäärittely](./budgeting-app/dokumentaatio/vaatimusmaarittely.md)
+- [Arkkitehtuurikuvaus](./budgeting-app/dokumentaatio/arkkitehtuuri.md)
+- [Testausdokumentti](./budgeting-app/dokumentaatio/testaus.md)
 - [Työaikakirjanpito](./budgeting-app/dokumentaatio/tuntikirjanpito.md)
 - [Changelog](./budgeting-app/dokumentaatio/changelog.md)
 
