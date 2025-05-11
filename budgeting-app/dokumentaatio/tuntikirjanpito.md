@@ -14,5 +14,9 @@
 | 25.4. | 1   | fontin korjaus 
 | 28.4. | 3  | budjettinäkymä uusiksi
 | 29.4. | 2 | docstring ja korjauksia
+| 4.5. | 1   | testausta 
+| 10.5. | 3  | testit kuntoon
+| 11.5. | 6 | lopulliset parannukset ja muutokset
 
-**Yhteensä 32h**
+
+**Yhteensä 42h**
